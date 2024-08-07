@@ -7,7 +7,17 @@ s.onload = function () {
  
 // receive message from injected script
 window.addEventListener('message', function (e) {
-    console.log('content script received:' , e.data.type, e.data.url, e.data.data);
+    if (e.data.url === "/api/inbound/clearing/articles/receive") {
+        console.warn('content script received:' , e.data.type, e.data.url, e.data.data);
+    }
+
+    if (e.data.url === "/api/inbound/articles/resolve-v3") {
+        console.log('content script received:' , e.data.type, e.data.url, e.data.data);
+    }
+
+    if (e.data.url === "/api/address-storage/Movement/put/v2") {
+        console.log('content script received:' , e.data.type, e.data.url, e.data.data);
+    }
 
     // TODO: post request to backend
 });
