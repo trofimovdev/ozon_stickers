@@ -12,11 +12,12 @@ window.addEventListener('message', function (e) {
     if (e.data.url === "/api/inbound/articles/resolve-v3") {
         // console.log('content script received:' , e.data.type, e.data.url, e.data.data);
         lastPosting = {
-            "id": e.data.data["id"],
-            "barcode": e.data.data["barcode"],
-            "address": e.data.data["address"],
+            "id": e.data.data.id,
+            "barcode": e.data.data.barcode,
+            "address": e.data.dataaddress,
         };
         console.log(lastPosting);
+        console.log(typeof e.data.data);
     }
 
     // if (e.data.url === "/api/inbound/clearing/articles/receive") {
