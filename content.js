@@ -10,21 +10,23 @@ let lastPosting = {};
 // receive message from injected script
 window.addEventListener('message', function (e) {
     if (e.data.url === "/api/inbound/articles/resolve-v3") {
-        console.log('content script received:' , e.data.type, e.data.url, e.data.data);
+        // console.log('content script received:' , e.data.type, e.data.url, e.data.data);
         const data = JSON.parse(e.data.data);
         lastPosting = {
             "id": data.id,
             "barcode": data.barcode,
             "address": data.address,
         };
-        console.log(lastPosting);
-        console.log(typeof data);
     }
 
     if (e.data.url === "/api/inbound/clearing/articles/receive") {
-        console.warn('content script received:' , e.data.type, e.data.url, e.data.data);
+        // console.warn('content script received:' , e.data.type, e.data.url, e.data.data);
         const data = JSON.parse(e.data.data);
 
+        if (data.articleId === lastPosting.id && data.articleBarcode === lastPosting.barcode) {
+            // TODO: status Success
+            console.log('print', lastPosting.address, lastPosting.barcode)
+        }
 
         // console.log(lastPosting)
 
