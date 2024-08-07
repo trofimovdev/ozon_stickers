@@ -22,8 +22,9 @@ window.addEventListener('message', function (e) {
     if (e.data.url === "/api/inbound/clearing/articles/receive") {
         console.warn('content script received:' , e.data.type, e.data.url, e.data.data);
         const data = JSON.parse(e.data.data);
-        console.log(data.articleId === lastPosting.id, data.articleId, lastPosting.id, data.articleBarcode === lastPosting.barcode, data.articleBarcode, lastPosting.barcode)
-        if (data.articleId === lastPosting.id && data.articleBarcode === lastPosting.barcode) {
+        console.log(data, typeof data)
+        console.log(data.state.articleId === lastPosting.id, data.state.articleId, lastPosting.id, data.state.articleBarcode === lastPosting.barcode, data.state.articleBarcode, lastPosting.barcode)
+        if (data.state.articleId === lastPosting.id && data.state.articleBarcode === lastPosting.barcode) {
             // TODO: status Success
             console.log('print', lastPosting.address, lastPosting.barcode)
         }
