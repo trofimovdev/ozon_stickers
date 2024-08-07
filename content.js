@@ -11,13 +11,14 @@ let lastPosting = {};
 window.addEventListener('message', function (e) {
     if (e.data.url === "/api/inbound/articles/resolve-v3") {
         // console.log('content script received:' , e.data.type, e.data.url, e.data.data);
+        const data = JSON.parse(e.data.data);
         lastPosting = {
-            "id": e.data.data.id,
-            "barcode": e.data.data.barcode,
-            "address": e.data.dataaddress,
+            "id": data.id,
+            "barcode": data.barcode,
+            "address": data.address,
         };
         console.log(lastPosting);
-        console.log(typeof e.data.data);
+        console.log(typeof data);
     }
 
     // if (e.data.url === "/api/inbound/clearing/articles/receive") {
