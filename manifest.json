@@ -1,0 +1,22 @@
+{
+  "name": "Ozon Stickers",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "Ozon Stickers extension",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://turbo-pvz.ozon.ru/*"
+      ],
+      "js": [
+        "./content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["injected.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
