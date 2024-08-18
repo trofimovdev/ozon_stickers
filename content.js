@@ -24,7 +24,7 @@ window.addEventListener('message', function (e) {
         const data = JSON.parse(e.data.data);
         console.log(data, typeof data)
         console.log("preprint", data.state.articleId === lastPosting.id, data.state.articleId, lastPosting.id, data.state.articleBarcode === lastPosting.barcode, data.state.articleBarcode, lastPosting.barcode)
-        if (data.state.articleId === lastPosting.id && data.state.articleBarcode === lastPosting.barcode && lastPosting.address !== "19" && data.state.status === "Success") {
+        if (data.state.articleId === lastPosting.id && lastPosting.address !== "19" && data.state.status === "Success") {
             // TODO: status Success
             
             console.warn('print', lastPosting.address, lastPosting.barcode)
